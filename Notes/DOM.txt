@@ -1,0 +1,47 @@
+querySelector = returns the first item on the page that meets the criteria
+querySelectorAll = returns array like object of selected tag, id, class
+Other methods of the document that can do the same things are getElementByClassName and get getElementById
+
+innerText = all the string based text inside a element interprets inputs as stictly text.
+textContent = all text minus tags shows whatever is on the html page
+
+innerHTML = you get all the content between selected tags
+
+value = what the value of whatever is selected
+href = attribute of weblinks 
+src = source of what the file is that is being rendered
+
+getAttribute = returns tha vlaue of the attribute that you selected or null if it doesn't exist
+
+setAttribute = changes the value that the attribute selected is set (select, value);
+
+parentElement = traverse elements upward
+children = elements within element
+nextElementSilbling = sibling element below 
+previousElementSibling = sibling element above 
+
+style = object with all the inline styles set to "" by default // that's why stylesheet changes don't appear in the object value /// you can apply styles to the elements using this attribute of the selected element
+
+getComputedStyle(h1) = will return the computed values of they styles of a ele. example:
+red = rgb(255,0,0);
+
+classList.remove = removes a class from a ele
+classList.add = adds a class to a ele
+classList.toggle = applies or removes a class from a ele
+
+Changing a group of styles within a ele // It's better to apply and remove a class with the styles defined in a css file 
+
+If you're changing one at a time you might want to do it with the style property.
+
+How to create elements within the DOM:
+
+createElement = creates a tag of a certain type. 
+apppendChild = puts the element after the last child within a elementl.
+insertBefore = (parent, childBefore); This appends the element to a parent but places it before a specified child.
+
+append = Not limited to manipulating one element. Places ele after selected element.
+prepend = Not limted to manipulating one element (1,2,3); . Places ele before selected element.
+
+remove = Removes the selected element. You can also save it to a var.
+
+

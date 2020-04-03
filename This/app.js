@@ -37,15 +37,47 @@ const person = {
   nickName: "Cher",
   fullName() {
     const { first, last, nickName } = this;
-    console.log(`${first} ${last} AKA ${nickName}`);
-    console.log(this);
+    return `${first} ${last} AKA ${nickName}`;
   },
   printBio() {
     console.log(this);
-    const derp = this.fullName();
-    console.log(`${derp} is a person!`);
+    const fullname = this.fullName();
+    console.log(`${fullname} is a person!`);
   }
 };
 
 // person.fullName();
 // person.printBio();
+
+// arrow functions doesn't get their own version of this..
+// the value of this is set by the invocation context
+
+const annoyer = {
+  phrases: [
+    "literally",
+    "cray cray",
+    "I can't even",
+    "Totes!",
+    "YOLO",
+    "Can't Stop, Won't Stop"
+  ],
+  pickPhrase() {
+    const { phrases } = this;
+    const idx = Math.floor(Math.random() * phrases.length);
+    return phrases[idx];
+  },
+  start() {
+    this.timerId = setInterval(() => {
+      console.log(this.pickPhrase());
+    }, 3000);
+  },
+  stop() {
+    clearInterval(this.timerId);
+    console.log("It's over");
+  }
+};
+
+// annoyer.start();
+// using a arrow function is better way of defining functions within objects because they don't gettheir own this. Creating regular functions get this based on the invocation context.
+
+// annoyer.start();
