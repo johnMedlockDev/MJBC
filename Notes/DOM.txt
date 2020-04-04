@@ -45,3 +45,20 @@ prepend = Not limted to manipulating one element (1,2,3); . Places ele before se
 remove = Removes the selected element. You can also save it to a var.
 
 
+Events are things that user can do and we can engineer interactivity around it.
+
+the thing | event type | the code to return
+  button  |   click    |   change color
+
+addEventListener = one method to rule them all. thing.addEventListener("Event", function(){ do somthing;})
+
+
+window.innerHeight/Width = gives you the total pixels of the browser available on screen.
+DOM Manipulation = select, alter element
+
+Events have an exent object that has trackable information in it
+
+There are three diffrent input events keydown, keyup, and keypress.
+
+keyup and keydown will fire for any key you press.
+keypress will only fire when you effect a value

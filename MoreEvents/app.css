@@ -1,0 +1,12 @@
+#boxes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box {
+  height: 200px;
+  width: 200px;
+}
+h1 {
+  text-align: center;
+}
