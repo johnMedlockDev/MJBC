@@ -62,3 +62,5 @@ There are three diffrent input events keydown, keyup, and keypress.
 
 keyup and keydown will fire for any key you press.
 keypress will only fire when you effect a value
+
+Event objects can prevent default behavior within eles. Example: form submit to another page. You can stop the form from submitting and make a client side submission
