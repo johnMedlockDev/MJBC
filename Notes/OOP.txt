@@ -1,0 +1,25 @@
+new = a operator
+
+Function factories are one way of creating objects, but the perfered way of doing it is with constructors.
+
+Objects get their built in methods from the prototype. __proto__ is a reffrence to the prototype.
+
+The new keyword creates a new* object, assigns this to the object, then returns this.
+
+class ClassName {
+    constructor(values passed to constructor){
+        this.values = values;
+    }
+    innerFunc(){
+        const { values } = this; // deconstructs values
+        return "something";
+    }
+    }
+    func(){
+        return `${this.innerFunc()}; // calls innerFunc
+    }
+}
+
+const c1 = new ClassName(values passed to the constructor); // assigns values to constructor within class
+
+The extends keyword grabs the constructor contents of the extends reffrence and builds off of it. You can use the super keyword to manipulate the parent.

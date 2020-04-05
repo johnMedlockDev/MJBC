@@ -1,0 +1,6 @@
+async = is a wrapper that turns a function into a function that returns a promise.
+await = can only be called on a async function, it "waits" till the promise is resolved before going further.
+
+Error handling = try/catch blocks = try the code you want to run // catch the errors // or you can chain a catch on to the funciton call with callback
+
+const var1 = await xxx = waits for resolved value and stores that value in the var1
