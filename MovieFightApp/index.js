@@ -32,7 +32,7 @@ const onMovieSelect = async (movie) => {
   const response = await axios.get("http://www.omdbapi.com/", {
     params: {
       // find out how to sumbit request to api from docs
-      apikey: "eb462547",
+      apikey: key,
       //   pass user search request from some kind of input
       i: movie.imdbID,
     },
