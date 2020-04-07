@@ -56,7 +56,7 @@ addEventListener = one method to rule them all. thing.addEventListener("Event", 
 window.innerHeight/Width = gives you the total pixels of the browser available on screen.
 DOM Manipulation = select, alter element
 
-Events have an event object that has trackable information in it
+Events have an exent object that has trackable information in it
 
 There are three diffrent input events keydown, keyup, and keypress.
 
@@ -64,18 +64,3 @@ keyup and keydown will fire for any key you press.
 keypress will only fire when you effect a value
 
 Event objects can prevent default behavior within eles. Example: form submit to another page. You can stop the form from submitting and make a client side submission
-
-
-******************************
-"this" Troubleshooting:
-
-Did you define the function with a arrow function?
-Write console.log(this) on the first vaild line above the arrow function. That value will be equal to the one in the function. * check babel if something isn't working right might not be valid.
-
-Did you call bind, call, or apply on the function when you invoked it?
-'this' is equal to the first argument of bind call or apply.
-
-All other cases - 
-'this' is equal to whatever is to the left of the '.' in the method call.
-***********************************
-
