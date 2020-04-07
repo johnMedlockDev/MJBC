@@ -1,0 +1,3 @@
+When possible code should be reusable.
+You should avoid giving specfic knowledge of whatever you're geting your data from.
+Global variables shouldn't refer to specific elements.
