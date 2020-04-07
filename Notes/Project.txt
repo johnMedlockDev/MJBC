@@ -1,0 +1,16 @@
+Mockup
+
+Responsiblity of the project
+
+Possible Implementation
+
+seperate concerns
+
+
+brainstorm what the ideal functionality would look like before you start the project
+
+**** 
+start with a really low resolution idea of what you're doing and slowly turn up the resolution
+
+implement basic functionality that is kinda like what you want and improve it as you go
+
