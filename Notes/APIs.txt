@@ -1,2 +1,0 @@
-Most apis have a index result and a show result. You can think of it like general (better for more results) && focused (for the details of a individual result).
-
