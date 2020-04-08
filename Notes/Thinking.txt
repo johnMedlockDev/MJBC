@@ -1,0 +1,12 @@
+Get a high level idea of what you want to make before you do any coding. 
+Identify features
+Identify trouble zones.
+
+Try to work out how you would solve the problem beforehand.
+
+Translate the process into comments in your code.
+
+frame 
+implement 
+test (works?)
+refactor
