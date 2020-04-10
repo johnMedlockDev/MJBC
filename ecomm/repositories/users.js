@@ -37,6 +37,7 @@ class UsersRepository {
     records.push(attrs);
 
     await this.writeAll(records);
+    return attrs;
   }
 
   //  writes all users to file
