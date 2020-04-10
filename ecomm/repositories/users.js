@@ -1,105 +1,92 @@
-// file manipulation node module
-const fs = require("fs");
-// node module for cryptography
-const crypto = require("crypto");
+const fs = require('fs');
+const crypto = require('crypto');
+const util = require('util');
 
-const util = require("util");
 const scrypt = util.promisify(crypto.scrypt);
 
 class UsersRepository {
-  // creates repositary instance
   constructor(filename) {
-    //   checks if call has filename in it
     if (!filename) {
-      throw new Error("Creating a repository requires a filename");
+      throw new Error('Creating a repository requires a filename');
     }
 
     this.filename = filename;
-
-    // logic for if filename already exist or not
     try {
       fs.accessSync(this.filename);
-    } catch (er) {
-      fs.writeFileSync(this.filename, "[]");
+    } catch (err) {
+      fs.writeFileSync(this.filename, '[]');
     }
   }
 
-  //   parses the json and return all the contents of the file
   async getAll() {
     return JSON.parse(
       await fs.promises.readFile(this.filename, {
-        encoding: "utf8",
+        encoding: 'utf8'
       })
     );
   }
 
-  //   Creates a new record in the file
   async create(attrs) {
     attrs.id = this.randomId();
 
-    const salt = crypto.randomBytes(8).toString("hex");
+    const salt = crypto.randomBytes(8).toString('hex');
     const buf = await scrypt(attrs.password, salt, 64);
 
     const records = await this.getAll();
     const record = {
       ...attrs,
-      password: `${buf.toString("hex")}.${salt}`,
+      password: `${buf.toString('hex')}.${salt}`
     };
     records.push(record);
 
     await this.writeAll(records);
+
     return record;
   }
 
   async comparePasswords(saved, supplied) {
-    const [hashed, salt] = saved.split(".");
+    // Saved -> password saved in our database. 'hashed.salt'
+    // Supplied -> password given to us by a user trying sign in
+    const [hashed, salt] = saved.split('.');
     const hashedSuppliedBuf = await scrypt(supplied, salt, 64);
 
-    return hashed === hasheSuppliedBuf.toString("hex");
+    return hashed === hashedSuppliedBuf.toString('hex');
   }
 
-  //  writes all users to file
   async writeAll(records) {
     await fs.promises.writeFile(
       this.filename,
-      JSON.stringify(records),
-      null,
-      2
+      JSON.stringify(records, null, 2)
     );
   }
 
-  //   creates random id for records
   randomId() {
-    return crypto.randomBytes(4).toString("hex");
+    return crypto.randomBytes(4).toString('hex');
   }
 
-  //   returns a record by the given id
   async getOne(id) {
     const records = await this.getAll();
-    return records.find((record) => record.id === id);
+    return records.find(record => record.id === id);
   }
 
-  //   deletes a record from the file
   async delete(id) {
     const records = await this.getAll();
-    const filteredRecords = records.filter((record) => record.id !== id);
-
+    const filteredRecords = records.filter(record => record.id !== id);
     await this.writeAll(filteredRecords);
   }
 
-  //   updates a record by id
   async update(id, attrs) {
     const records = await this.getAll();
-    const record = records.find((record) => record.id === id);
+    const record = records.find(record => record.id === id);
 
     if (!record) {
-      throw new Error(`No record with ${id}`);
+      throw new Error(`Record with id ${id} not found`);
     }
+
     Object.assign(record, attrs);
     await this.writeAll(records);
   }
 
-  //   returns a unique record
   async getOneBy(filters) {
     const records = await this.getAll();
 
@@ -118,6 +105,5 @@ class UsersRepository {
     }
   }
 }
-// =============================================
 
-module.exports = new UsersRepository("users.json");
+module.exports = new UsersRepository('users.json');
